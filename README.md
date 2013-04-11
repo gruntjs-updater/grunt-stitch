@@ -28,56 +28,45 @@ grunt.initConfig({
     options: {
       // Task-specific options go here.
     },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
   },
 })
 ```
 
 ### Options
 
-#### options.separator
+#### options.paths
+Type: `Array`
+
+Paths or directories of files containing javascript and/or coffeescript modules.
+
+#### options.dependencies
+Type: `Array`
+
+Dependencies that are not defined as commonjs modules, files are
+concatenated and prepended to packaged javascript file.
+
+#### options.dest
 Type: `String`
-Default value: `',  '`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+Path destination for resulting packaged javascript file.
 
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
-
-```js
-grunt.initConfig({
-  stitch: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
-})
-```
-
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+#### Options
 
 ```js
 grunt.initConfig({
   stitch: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
+      paths: [
+        'assets/js'
+      ],
+      dependencies: [
+        'public/js/modernizr-min.js',
+        'public/js/jquery-min.js'
+      ],
+      dest: 'public/js/app.js'
+    }
   },
 })
 ```
@@ -86,4 +75,4 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+2013-04-01 v0.1.0 initial release
