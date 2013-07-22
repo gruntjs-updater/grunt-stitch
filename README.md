@@ -74,7 +74,7 @@ Dependencies that are not defined as commonjs modules, files are
 concatenated and prepended to packaged javascript file.
 
 #### options.npmdependencies
-Type: `Array`
+Type: `Object`
 Default value: `[]`
 
 npmdependencies option provide a way to do fancy bundling of npm packages in order to Node js NPM bundles.
@@ -100,17 +100,17 @@ All Options usage example
 grunt.initConfig({
   stitch: {
     options: {
-      paths: [
+      paths: {
         'assets/js': 'js'
-      ],
+      },
       dependencies: [
         'public/js/modernizr-min.js',
         'public/js/jquery-min.js'
       ],
-      npmdependencies: [
+      npmdependencies: {
         'dist/handlebars.min.js': 'handlebars',
         'lib/matchdep.js': 'matchdep'
-      ],
+      },
       tmp: 'path/to/alternate/tmpdir'
     },
     dist: {
@@ -215,5 +215,5 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-2013-07-22 v0.2.0 Multi task and aliases and NPM support.
+2013-07-22 v0.2.0 Multi tasks aliases and NPM support.
 2013-04-01 v0.1.0 initial release

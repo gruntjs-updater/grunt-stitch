@@ -16,7 +16,12 @@ module.exports = function(grunt) {
     grunt.registerMultiTask('stitch', 'Compile common.js modules with stitch.', function() {
         var done = this.async();
 
-        var options = this.options();
+        var options = this.options({
+            tmp: 'tmp',
+            dependencies: [],
+            npmDependencies: {},
+            paths: {}
+        });
         var tmpdir = options.tmp;
         var dependencies = grunt.file.expand(options.dependencies);
         var aliasregx = new RegExp('^(' + grunt.util._.keys(options.paths).join('|') + ')');
