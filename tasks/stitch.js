@@ -17,7 +17,7 @@ module.exports = function(grunt) {
         var done = this.async();
 
         var options = this.options();
-        var tmpDir = __dirname + options.tmp;
+        var tmpdir = options.tmp;
         var dependencies = grunt.file.expand(options.dependencies);
         var aliasregx = new RegExp('^(' + grunt.util._.keys(options.paths).join('|') + ')');
 
@@ -48,20 +48,20 @@ module.exports = function(grunt) {
             }));
 
             // Clean the tmp dir, to prevent picking up old files.
-            if (grunt.file.exists(tmpDir)) {
-                grunt.file.delete(tmpDir);
+            if (grunt.file.exists(tmpdir)) {
+                grunt.file.delete(tmpdir);
             }
 
             // Copy everything to the tmp directory, which will be the
             // base path for the Stitch bundle.
             pathMaps.forEach(function(pathMap) {
-                grunt.file.copy(pathMap[0], tmpDir + '/' + pathMap[1]);
+                grunt.file.copy(pathMap[0], tmpdir + '/' + pathMap[1]);
             });
 
-            assertFiles(pathMaps.length, tmpDir, function() {
+            assertFiles(pathMaps.length, tmpdir, function() {
                 // Create the Stitch package.
                 stitch.createPackage({
-                    paths: [tmpDir],
+                    paths: [tmpdir],
                     dependencies: dependencies
                 }).compile(function(err, source) {
                     if (err) {
@@ -77,12 +77,12 @@ module.exports = function(grunt) {
 
     /**
     * Sometimes, the Stitch compliation appears to happen before all files are copied over to
-    * the `tmpDir`.  We simply wait until they are.
+    * the `tmpdir`.  We simply wait until they are.
     */
-    function assertFiles(expectedNumFiles, tmpDir, callback) {
+    function assertFiles(expectedNumFiles, tmpdir, callback) {
         function countFiles() {
             var numFiles = 0;
-            grunt.file.recurse(tmpDir, function(abspath, rootdir, subdir, filename) {
+            grunt.file.recurse(tmpdir, function(abspath, rootdir, subdir, filename) {
                 numFiles++;
             });
             return numFiles === expectedNumFiles;
