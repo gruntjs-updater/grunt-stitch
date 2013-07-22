@@ -125,7 +125,7 @@ grunt.initConfig({
 
 In this example, running `grunt stitch` will build two separate files. One "basic" version, with the main file essentially stitched to `dist/basic.js`, and another "with_extras" version written to `dist/with_extras.js`.
 
-While each stitch target can be built individually by running `grunt stitch:basic` or `grunt stitch:extras`, running `grunt stitch` will build all stitch targets. This is because `stitch` is a [multi task][multitask].
+While each stitch target can be built individually by running `grunt stitch:basic` or `grunt stitch:extras`, running `grunt stitch` will build all stitch targets. This is because `stitch` is a [multi task](http://gruntjs.com/creating-tasks#multi-tasks).
 
 ```js
 // Project configuration.
@@ -186,7 +186,7 @@ grunt.initConfig({
 
 #### Advanced dynamic filenames
 
-In this more involved example, running `grunt stitch` will build two separate files (because `stitch` is a [multi task][multitask]). The destination file paths will be expanded dynamically based on the specified templates, recursively if necessary.
+In this more involved example, running `grunt stitch` will build two separate files (because `stitch` is a [multi task](http://gruntjs.com/creating-tasks#multi-tasks)). The destination file paths will be expanded dynamically based on the specified templates, recursively if necessary.
 
 For example, if the `package.json` file contained `{"name": "awesome", "version": "1.0.0"}`, the files `dist/awesome/1.0.0/basic.js` and `dist/awesome/1.0.0/with_extras.js` would be generated.
 
@@ -215,5 +215,5 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-2013-07-22 v0.2.0 Multi tasks aliases and NPM support.
-2013-04-01 v0.1.0 initial release
+ * 2013-07-22 v0.2.0 Multi tasks aliases and NPM support.
+ * 2013-04-01 v0.1.0 initial release
